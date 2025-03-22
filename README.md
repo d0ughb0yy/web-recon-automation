@@ -5,6 +5,7 @@ The script is a Bash automation tool designed for bug bounty hunters and securit
 
 ## Requirements
 The script depends on the following tools and utilities, which must be installed and accessible in your PATH:
+
 **Subfinder**
 ```
 https://github.com/projectdiscovery/subfinder
@@ -33,7 +34,7 @@ The script assumes tools are installed or aliased with specific names (e.g., sub
 The script supports various reconnaissance scenarios through its flag-based system.
 Below are common use cases:
 
-**Use Case 1: Full Reconnaissance Workflow**
+### Full Reconnaissance Workflow
 ```
 ./recon.sh target.com --all
 ```
@@ -44,12 +45,14 @@ Runs the entire pipeline:
 P4. rocesses .js files with xnlinkfinder.
 Output: Combined subdomains, live subdomains, crawl results, and JS links in a timestamped directory.
 
-**Use Case 2: Subdomain Enumeration Only**
-> ./recon.sh target.com --sub
+### Subdomain Enumeration Only
+```
+./recon.sh target.com --sub
+```
 Gathers subdomains using Subfinder and crt.sh, combining them into a deduplicated list. The crt.sh temporary file is cleaned up afterward.
 Output: subfinder_subdomains.txt, subdomains.txt (combined).
 
-**Use Case 3: Basic HTTP Probing**
+### Basic HTTP Probing
 ```
 ./recon.sh target.com --probe
 ```
@@ -57,7 +60,7 @@ Probes subdomains from subdomains.txt with httpx (rate-limited to 10 req/s by de
 Output: live_subdomains.txt.
 *Prerequisite: Requires subdomains.txt from a prior --sub run.*
 
-**Use Case 4: Detailed HTTP Scanning**
+### Detailed HTTP Scanning
 ```
 ./recon.sh target.com --probe --scan
 ```
@@ -65,7 +68,7 @@ Runs the basic httpx probe plus a detailed scan with status codes, locations, CD
 Output: live_subdomains.txt, httpx_scan.txt.
 *Prerequisite: Requires subdomains.txt and the --probe flag.*
 
-**Use Case 5: Web Crawling and JS Link Extraction**
+### Web Crawling and JS Link Extraction
 ```
 ./recon.sh target.com --spider
 ```
@@ -73,14 +76,16 @@ Crawls live subdomains with Katana (rate-limited to 10 req/s by default), extrac
 Output: katana_output.txt, js_files.txt, xnlinkfinder_output.txt.
 *Prerequisite: Requires live_subdomains.txt from a prior --probe run.*
 
-**Use Case 6: Custom Rate Limiting**
+### Custom Rate Limiting
 ```
 ./recon.sh target.com --all --rl 5
 ```
 Runs the full pipeline with a custom rate limit of 5 requests per second for httpx and Katana, adjustable via the --rl flag.
 Output: Same as Use Case 1, with rate limiting applied.
 
-**Combined Example**
-> ./recon.sh target.com --sub --probe --scan --spider --rl 3
+### Combined Example
+```
+./recon.sh target.com --sub --probe --scan --spider --rl 3
+```
 Executes subdomain enumeration, basic probing, detailed scanning, and crawling/link extraction in sequence with a 3 req/s rate limit.
 Output: All relevant files in a timestamped directory.
