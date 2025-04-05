@@ -131,7 +131,7 @@ fi
 if [ "$RUN_SPIDER" = true ]; then
     if [ -f live_subdomains.txt ]; then
         echo -e "${GREEN}[+] Running katana with rate limit of $RATE_LIMIT req/s${NC}"
-        katana -u live_subdomains.txt --xn -r "$RATE_LIMIT" | anew katana_output.txt
+        katana -u live_subdomains.txt -jc -kf all -r "$RATE_LIMIT" | anew katana_output.txt
 
         echo -e "${GREEN}[+] Processing JavaScript files${NC}"
         grep ".js" katana_output.txt > js_files.txt
