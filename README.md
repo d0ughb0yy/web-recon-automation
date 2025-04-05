@@ -1,7 +1,7 @@
 # Automated Subdomain Recon Script
 ## About
 This script is a personal project and my way of learning bash scripting.
-The script is a Bash automation tool designed for bug bounty hunters and security researchers to streamline reconnaissance workflows. It leverages popular tools like Subfinder, httpx, Katana (via Docker alias), and xnlinkfinder to enumerate subdomains, probe live hosts, crawl websites, and extract JavaScript links. The script includes rate limiting to avoid WAF triggers, fetches subdomains from crt.sh (parsed via HTML), and provides a modular flag-based execution system. Results are organized in a timestamped directory, with temporary files cleaned up post-execution.
+The script is a Bash automation tool designed for bug bounty hunters and security researchers to streamline reconnaissance workflows. It leverages popular tools like subfinder, httpx, katana, and xnlinkfinder to enumerate subdomains, probe live hosts, crawl websites, and extract JavaScript links. The script includes rate limiting to avoid WAF triggers, fetches subdomains from crt.sh (parsed via HTML), and provides a modular flag-based execution system. Results are organized in a timestamped directory, with temporary files cleaned up post-execution.
 
 ## Requirements
 The script depends on the following tools and utilities, which must be installed and accessible in your PATH:
