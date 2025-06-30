@@ -83,8 +83,8 @@ Output: katana_output.txt, js_files.txt, xnlinkfinder_output.txt.
 Runs the full pipeline with a custom rate limit of 5 requests per second for httpx and Katana, adjustable via the --rl flag.
 Output: Same as Use Case 1, with rate limiting applied.
 
-### Combined Example
-```
+### Known bugs
+- Invalid JSON parsing from crt.sh, some URLs get put in the same line separated by '/n' delimiter.
 ./recon.sh target.com --sub --probe --scan --spider --rl 3
 ```
 Executes subdomain enumeration, basic probing, detailed scanning, and crawling/link extraction in sequence with a 3 req/s rate limit.
