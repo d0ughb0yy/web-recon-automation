@@ -85,7 +85,3 @@ Output: Same as Use Case 1, with rate limiting applied.
 
 ### Known bugs
 - Invalid JSON parsing from crt.sh, some URLs get put in the same line separated by '/n' delimiter.
-./recon.sh target.com --sub --probe --scan --spider --rl 3
-```
-Executes subdomain enumeration, basic probing, detailed scanning, and crawling/link extraction in sequence with a 3 req/s rate limit.
-Output: All relevant files in a timestamped directory.
